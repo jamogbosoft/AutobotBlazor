@@ -1,0 +1,60 @@
+﻿@page "/centres"
+@inject ICentreService centreService
+
+<PageTitle>Centres</PageTitle>
+
+<h3>Centres</h3>
+
+@if (loading)
+{
+    <span>Loading Centres</span>
+}
+else
+{
+    var sn = 0;
+    <table class="table table-sm table-striped border table-bordered">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Reference No.</th>
+                <th>Center Name</th>
+                <th>State</th>
+                <th>Expected Capacity</th>
+                <th>Has Autobot</th>
+                <th>Realized Nodes</th>
+                <th>Uploaded Center Report</th>
+                <th>Uploaded Computer Report</th>
+                <th>Uploaded Exam Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var centre in centreService.CentresList)
+            {
+                <tr>
+                    <td>
+                        @(++sn)
+                    </td>
+                    <td>@centre.referenceNumber</td>
+                    <td>@centre.centerName</td>
+                    <td>@centre.state</td>
+                    <td>@centre.capacity</td>
+                    <td>@centre.hasAutobot</td>
+                    <td>@centre.totalRealizedNodes</td>
+                    <td>@centre.hasUploadedCenterReport</td>
+                    <td>@centre.hasUploadedComputerReport</td>
+                    <td>@centre.hasUploadedExamReport</td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await centreService.GetCentres();
+        loading = false;
+    }
+}

@@ -1,0 +1,79 @@
+﻿@page "/exams"
+@inject IExamService examService
+@inject IJSRuntime jsRuntime
+
+<PageTitle>Centres</PageTitle>
+
+<h3>Dummy Exams</h3>
+
+@if (loading)
+{
+    <span>Loading Exams</span>
+}
+else
+{
+    var sn = 0;
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                2023 Dummy UTME Analysis
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped border table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Centre Ref. No</th>
+                            @* <th>Centre Name</th>*@
+                            <th>State</th>
+                            <th>Reg. No</th>
+                            <th>Candidate</th>
+                            <th>IP Address</th>
+                            <th>Response Count</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Start Status</th>
+                            <th>End Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var exam in examService.ExamsList)
+                        {
+                            @foreach (var node in exam.nodesList)
+                            {
+                                <tr>
+                                    <td>
+                                        @(++sn)
+                                    </td>
+                                    <td>@exam.centerReferenceNumber</td>
+                                    @* <td>@exam.centerName</td>*@
+                                    <td>@exam.centerState</td>
+                                    <td>@node.registrationNumber</td>
+                                    <td>@node.candidateName</td>
+                                    <td>@node.ipAddress</td>
+                                    <td>@node.responseCount</td>
+                                    <td>@node.startTime</td>
+                                    <td>@node.endTime</td>
+                                    <td>@node.startStatus</td>
+                                    <td>@node.endStatus</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await examService.GetExams();
+        loading = false;
+    }
+}

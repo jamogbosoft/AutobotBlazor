@@ -1,0 +1,72 @@
+﻿@page "/multiple-Login-analysis"
+@inject ICandidateService candidateService
+
+<PageTitle>Multiple Login Analysis</PageTitle>
+
+<h3>2023 UTME EXAMINATION</h3>
+
+@if (loading)
+{
+    <span>Loading Multiple Login Analysis...</span>
+}
+else
+{
+    var sn = 0;
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Multiple Login Analysis
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped border table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>CentreId</th>
+                            <th>Session</th>
+                            <th>Exam Date</th>
+                            <th>No of Candidates</th>
+                            <th>Login<br>Attempt<br>(0)</th>
+                            <th>Login<br>Attempt<br>(1)</th>
+                            <th>Login<br>Attempts<br>(2 - 3)</th>
+                            <th>Login<br>Attempts<br>(4 - 5)</th>
+                            <th>Login<br>Attempts<br>(6 - N)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var relogin in candidateService.MultipleLogins)
+                        {
+                            <tr>
+                                <td>
+                                    @(++sn)
+                                </td>
+                                <td>@relogin.CentreId</td>
+                                <td>@relogin.SessionRef</td>
+                                <td>@relogin.ExamDate</td>
+                                <td>@relogin.NumberOfCandidates</td>
+                                <td>@relogin.Category_A_Count</td>
+                                <td>@relogin.Category_B_Count</td>
+                                <td>@relogin.Category_C_Count</td>
+                                <td>@relogin.Category_D_Count</td>
+                                <td>@relogin.Category_E_Count</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+}
+
+@code {
+    bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await candidateService.GetMultipleLoginAnalysis();
+        loading = false;
+    }
+}

@@ -1,0 +1,72 @@
+﻿@page "/response-count-analysis"
+@inject ICandidateService candidateService
+
+<PageTitle>Response Count Analysis</PageTitle>
+
+<h3>2023 UTME EXAMINATION</h3>
+
+@if (loading)
+{
+    <span>Loading Response Count Analysis...</span>
+}
+else
+{
+    var sn = 0;
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Response Count Analysis
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped border table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>CentreId</th>
+                            <th>Session</th>
+                            <th>Exam Date</th>
+                            <th>No of Candidates</th>
+                            <th>Response<br>(0)</th>
+                            <th>Responses<br>(1 - 99)</th>
+                            <th>Responses<br>(100 - 159)</th>
+                            <th>Responses<br>(160 - 180)</th>
+                            <th>Responses<br>(181 - N)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var response in candidateService.ResponseCounts)
+                        {
+                            <tr>
+                                <td>
+                                    @(++sn)
+                                </td>
+                                <td>@response.CentreId</td>
+                                <td>@response.SessionRef</td>
+                                <td>@response.ExamDate</td>
+                                <td>@response.NumberOfCandidates</td>
+                                <td>@response.Category_A_Count</td>
+                                <td>@response.Category_B_Count</td>
+                                <td>@response.Category_C_Count</td>
+                                <td>@response.Category_D_Count</td>
+                                <td>@response.Category_E_Count</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+}
+
+@code {
+    bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await candidateService.GetResponseCountAnalysis();
+        loading = false;
+    }
+}

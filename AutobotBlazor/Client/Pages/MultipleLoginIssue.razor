@@ -1,0 +1,86 @@
+﻿@page "/multiple-login-issues"
+@inject ICandidateService candidateService
+
+<PageTitle>Multiple Login Issues</PageTitle>
+
+<h3>2023 UTME EXAMINATION</h3>
+
+@if (loading)
+{
+    <span>Loading Multiple Login Issues...</span>
+}
+else
+{
+    var sn = 0;
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Multiple Login Issues
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped border table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>CentreId</th>
+                            <th>Session</th>
+                            <th>Exam Date</th>
+                            <th>Reg. No</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Duration</th>
+                            <th>Response Count</th>
+                            <th>IP Address</th>
+                            <th>Host Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var candidate in candidateService.Candidates)
+                        {
+                            <tr>
+                                <td>
+                                    @(++sn)
+                                </td>
+                                <td>@candidate.CentreId</td>
+                                <td>@candidate.SessionRef</td>
+                                <td>@candidate.ExamDate</td>
+                                <td>@candidate.RegistrationNumber</td>
+                                <td>@candidate.StartTime</td>
+                                <td>@candidate.EndTime</td>
+                                <td>@candidate.Duration</td>
+                                <td>@candidate.TotalAttempted</td>
+                                <td>
+                                    @if (candidate.HostIPs is not null)
+                                    {
+                                        @foreach (var hostIP in candidate.HostIPs)
+                                        {
+                                            <span>@hostIP.ip@@@hostIP.time.date.Substring(11)</span> <br>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @if (candidate.HostIPs is not null)
+                                    {
+                                        <span>@candidate.HostIPs.Count()</span>                                       
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await candidateService.GetMultipleLoginIssues();
+        loading = false;
+    }
+}
