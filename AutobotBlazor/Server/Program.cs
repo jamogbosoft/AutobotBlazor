@@ -1,9 +1,10 @@
-global using AutobotBlazor.Server.Data;
+﻿global using AutobotBlazor.Server.Data;
 global using AutobotBlazor.Server.Service.CandidateService;
 global using AutobotBlazor.Shared.Models;
 global using AutobotBlazor.Shared.Services;
 global using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using AutobotBlazor.Server.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,12 @@ else
 }
 
 app.UseSwagger();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+};
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
