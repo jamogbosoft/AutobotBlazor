@@ -8,7 +8,8 @@
 
 @if (loading)
 {
-    <span>Loading Exams</span>
+    <Loading Message=@message></Loading>
+   @*  <span>Loading Exams</span> *@
 }
 else
 {
@@ -70,6 +71,7 @@ else
 
 @code {
     bool loading = true;
+    string message = "Loading Exams";
 
     protected override async Task OnInitializedAsync()
     {

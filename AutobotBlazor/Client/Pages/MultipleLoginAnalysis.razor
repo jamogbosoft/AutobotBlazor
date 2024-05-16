@@ -3,11 +3,12 @@
 
 <PageTitle>Multiple Login Analysis</PageTitle>
 
-<h3>2023 UTME EXAMINATION</h3>
+<h3>2024 UTME EXAMINATION</h3>
 
 @if (loading)
 {
-    <span>Loading Multiple Login Analysis...</span>
+    <Loading Message=@message></Loading>
+   @*  <span>Loading Multiple Login Analysis...</span> *@
 }
 else
 {
@@ -63,6 +64,7 @@ else
 
 @code {
     bool loading = true;
+    string message = "Loading Multiple Login Analysis...";
 
     protected override async Task OnInitializedAsync()
     {

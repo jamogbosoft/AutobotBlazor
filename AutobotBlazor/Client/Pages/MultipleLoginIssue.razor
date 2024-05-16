@@ -3,11 +3,12 @@
 
 <PageTitle>Multiple Login Issues</PageTitle>
 
-<h3>2023 UTME EXAMINATION</h3>
+<h3>2024 UTME EXAMINATION</h3>
 
 @if (loading)
 {
-    <span>Loading Multiple Login Issues...</span>
+    <Loading Message=@message></Loading>
+   @*  <span>Loading Multiple Login Issues...</span> *@
 }
 else
 {
@@ -56,7 +57,7 @@ else
                                     {
                                         @foreach (var hostIP in candidate.HostIPs)
                                         {
-                                            <span>@hostIP.ip@@@hostIP.time.date.Substring(11)</span> <br>
+                                            <span>@hostIP.ip@@@hostIP.time</span> <br>
                                         }
                                     }
                                 </td>
@@ -77,6 +78,7 @@ else
 
 @code {
     bool loading = true;
+    string message = "Loading Multiple Login Issues...";
 
     protected override async Task OnInitializedAsync()
     {

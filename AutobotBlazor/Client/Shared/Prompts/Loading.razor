@@ -1,0 +1,13 @@
+﻿
+<div class="text-center justify-content-center ">
+    <div class="border-bottom border-primary spinner-border mb-2"></div>
+    @* <div>
+        <img src="/img/loading-gif.gif" />
+    </div> *@
+    
+    <div class="text-primary">@Message</div>
+</div>
+@code {
+    [Parameter]
+    public string Message { get; set; } = string.Empty;
+}

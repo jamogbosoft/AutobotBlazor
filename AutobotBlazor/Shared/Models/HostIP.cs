@@ -12,8 +12,10 @@ namespace AutobotBlazor.Shared.Models
         public long Id { get; set; }
         public long CandidateResponseId { get; set; }
         public string ip { get; set; } = string.Empty;
-        public ExamTime time { get; set; } = new ExamTime();
-        public ExamType _id { get; set; } = new ExamType();
+        public string date { get; set; } = string.Empty;
+        public string time { get; set; } = string.Empty;
+        //public ExamTime time { get; set; } = new ExamTime();
+        //public ExamType _id { get; set; } = new ExamType();
 
 
         [ForeignKey("CandidateResponseId")]

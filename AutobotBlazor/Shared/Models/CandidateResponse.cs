@@ -17,9 +17,10 @@ namespace AutobotBlazor.Shared.Models
         public string SessionRef { get; set; } = string.Empty;
         public int TotalAttempted { get; set; }
         [StringLength(12)]
-        public string EndTime{ get; set; } = string.Empty;
-        [StringLength(12)]
         public string StartTime { get; set; } = string.Empty;
+        [StringLength(12)]
+        public string EndTime{ get; set; } = string.Empty;
+        
         [StringLength(12)]       
         public string Duration { get; set; } = string.Empty;
         public List<HostIP> HostIPs { get; set; } = new();

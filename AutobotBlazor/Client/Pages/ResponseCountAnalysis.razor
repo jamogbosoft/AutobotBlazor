@@ -7,7 +7,8 @@
 
 @if (loading)
 {
-    <span>Loading Response Count Analysis...</span>
+    <Loading Message=@message ></Loading>
+   @*  <span>Loading Response Count Analysis...</span> *@
 }
 else
 {
@@ -61,8 +62,9 @@ else
     </div>
 }
 
-@code {
+ @code {
     bool loading = true;
+    string message = "Loading Response Count Analysis...";
 
     protected override async Task OnInitializedAsync()
     {
