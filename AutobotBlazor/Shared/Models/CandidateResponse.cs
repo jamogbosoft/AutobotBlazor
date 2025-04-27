@@ -12,10 +12,12 @@ namespace AutobotBlazor.Shared.Models
         public string SessionRef { get; set; } = string.Empty;
         [StringLength(10)]
         public string ExamDate { get; set; } = string.Empty;
+        [StringLength(20)]
         public string Timestamp { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;       
         [StringLength(14)]
-        public string RegistrationNumber { get; set; } = string.Empty;       
+        public string RegistrationNumber { get; set; } = string.Empty;
+        [StringLength(15)]
         public string Status { get; set; } = string.Empty;
         public int TotalAttempted { get; set; }
         [StringLength(20)]

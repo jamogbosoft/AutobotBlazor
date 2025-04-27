@@ -9,7 +9,7 @@ namespace AutobotBlazor.Shared.Models
         public long HostIPId { get; set; }
         public string oid { get; set; } = string.Empty;
 
-        [ForeignKey("HostIPId")]
+        [ForeignKey(nameof(HostIPId))]
         public HostIP? HostIP { get; set; }
     }
 }

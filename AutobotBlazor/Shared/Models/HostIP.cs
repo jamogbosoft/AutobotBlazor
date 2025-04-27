@@ -12,8 +12,7 @@ namespace AutobotBlazor.Shared.Models
         //public ExamTime time { get; set; } = new ExamTime();
         //public ExamType _id { get; set; } = new ExamType();
 
-
-        [ForeignKey("CandidateResponseId")]
+        [ForeignKey(nameof(CandidateResponseId))]
         public CandidateResponse? CandidateResponse { get; set; }
     }
 }
