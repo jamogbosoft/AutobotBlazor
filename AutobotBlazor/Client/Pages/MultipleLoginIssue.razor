@@ -3,7 +3,7 @@
 
 <PageTitle>Multiple Login Issues</PageTitle>
 
-<h3>2024 UTME EXAMINATION</h3>
+<h3>2025 UTME EXAMINATION</h3>
 
 @if (loading)
 {
@@ -48,16 +48,16 @@ else
                                 <td>@candidate.SessionRef</td>
                                 <td>@candidate.ExamDate</td>
                                 <td>@candidate.RegistrationNumber</td>
-                                <td>@candidate.StartTime</td>
-                                <td>@candidate.EndTime</td>
-                                <td>@candidate.Duration</td>
+                                <td>@candidate.StartTime.Substring(0,8)</td>
+                                <td>@candidate.EndTime.Substring(0, 8)</td>
+                                <td>@candidate.Duration.Substring(0, 8)</td>
                                 <td>@candidate.TotalAttempted</td>
                                 <td>
                                     @if (candidate.HostIPs is not null)
                                     {
                                         @foreach (var hostIP in candidate.HostIPs)
                                         {
-                                            <span>@hostIP.ip@@@hostIP.time</span> <br>
+                                            <span>@hostIP.Ip@@@hostIP.Time</span> <br>
                                         }
                                     }
                                 </td>

@@ -77,5 +77,16 @@ namespace AutobotBlazor.Server.Controllers
             }
             return NotFound(result);
         }
+
+        //[HttpGet("host-ip")]
+        //public async Task<ActionResult<ServiceResponse<List<CandidateResponse>>>> UpdateCandidatePreviousHostIps()
+        //{
+        //    var result = await _candidateService.UpdateCandidatePreviousHostIps();
+        //    if (result != null)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return NotFound(result);
+        //}
     }
 }

@@ -3,6 +3,7 @@ using AutobotBlazor.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutobotBlazor.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250425085654_ExternalCandidatesUpdate")]
+    partial class ExternalCandidatesUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +107,7 @@ namespace AutobotBlazor.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CandidateResponses", (string)null);
+                    b.ToTable("CandidateResponses");
                 });
 
             modelBuilder.Entity("AutobotBlazor.Shared.Models.ExamTime", b =>
@@ -130,7 +133,7 @@ namespace AutobotBlazor.Server.Migrations
 
                     b.HasIndex("HostIPId");
 
-                    b.ToTable("ExamTimes", (string)null);
+                    b.ToTable("ExamTimes");
                 });
 
             modelBuilder.Entity("AutobotBlazor.Shared.Models.ExamType", b =>
@@ -152,7 +155,7 @@ namespace AutobotBlazor.Server.Migrations
 
                     b.HasIndex("HostIPId");
 
-                    b.ToTable("ExamTypes", (string)null);
+                    b.ToTable("ExamTypes");
                 });
 
             modelBuilder.Entity("AutobotBlazor.Shared.Models.HostIP", b =>
@@ -182,7 +185,7 @@ namespace AutobotBlazor.Server.Migrations
 
                     b.HasIndex("CandidateResponseId");
 
-                    b.ToTable("HostIPs", (string)null);
+                    b.ToTable("HostIPs");
                 });
 
             modelBuilder.Entity("AutobotBlazor.Shared.Models.ExamTime", b =>

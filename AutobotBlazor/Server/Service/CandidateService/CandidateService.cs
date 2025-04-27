@@ -154,7 +154,7 @@ namespace AutobotBlazor.Server.Service.CandidateService
                     Category_E_Count = categoryE
                 };
 
-                responseCounts.Add(responseCount);                
+                responseCounts.Add(responseCount);
             }
 
             var result = responseCounts.OrderBy(x => x.SessionRef).ToList();
@@ -163,5 +163,19 @@ namespace AutobotBlazor.Server.Service.CandidateService
                 Data = result
             };
         }
+
+        public async Task AddCandidateResponse(CandidateResponse candidateResponse)
+        {
+            await _context.CandidateResponses.AddAsync(candidateResponse);
+        }
+
+        //public async Task<ServiceResponse<List<CandidateResponse>>> UpdateCandidatePreviousHostIps()
+        //{
+        //    var candidates = await _context.CandidateResponses.ToListAsync();
+        //    candidates.ForEach(c => c.PreviousHostIps = c.PreviousHostIps.Replace('\'', '\"'));
+        //    await _context.SaveChangesAsync();
+
+        //    return await GetCandidateResponses();
+        //}
     }
 }

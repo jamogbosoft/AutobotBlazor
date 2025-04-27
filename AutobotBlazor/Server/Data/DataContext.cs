@@ -11,6 +11,7 @@ namespace AutobotBlazor.Server.Data
         public DbSet<HostIP> HostIPs { get; set; }
         public DbSet<ExamTime> ExamTimes { get; set; }
         public DbSet<ExamType> ExamTypes { get; set; }
+       // public DbSet<ExternalCandidate> ExternalCandidates { get; set; }
 
     }
 }

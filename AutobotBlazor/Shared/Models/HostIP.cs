@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutobotBlazor.Shared.Models
 {
@@ -11,9 +6,9 @@ namespace AutobotBlazor.Shared.Models
     {
         public long Id { get; set; }
         public long CandidateResponseId { get; set; }
-        public string ip { get; set; } = string.Empty;
-        public string date { get; set; } = string.Empty;
-        public string time { get; set; } = string.Empty;
+        public string Ip { get; set; } = string.Empty;
+        public string Date { get; set; } = string.Empty;
+        public string Time { get; set; } = string.Empty;
         //public ExamTime time { get; set; } = new ExamTime();
         //public ExamType _id { get; set; } = new ExamType();
 

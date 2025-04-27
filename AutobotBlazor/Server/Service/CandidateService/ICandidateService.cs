@@ -8,5 +8,7 @@
         Task<ServiceResponse<List<CandidateResponse>>> GetMultipleLoginIssues();
         Task<ServiceResponse<List<CentreAnalysisResponse>>> GetMultipleLoginAnalysis();
         Task<ServiceResponse<List<CentreAnalysisResponse>>> GetResponseCountAnalysis();
+        Task AddCandidateResponse(CandidateResponse candidateResponse);
+        //Task<ServiceResponse<List<CandidateResponse>>> UpdateCandidatePreviousHostIps();
     }
 }

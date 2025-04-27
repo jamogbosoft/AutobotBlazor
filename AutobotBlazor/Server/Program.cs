@@ -3,8 +3,8 @@ global using AutobotBlazor.Server.Service.CandidateService;
 global using AutobotBlazor.Shared.Models;
 global using AutobotBlazor.Shared.Services;
 global using Microsoft.EntityFrameworkCore;
+using AutobotBlazor.Server.Service.ExternalCandidateService;
 using System.Text.Json.Serialization;
-using AutobotBlazor.Server.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +29,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddScoped<ICandidateService, CandidateService>();
+builder.Services.AddHttpClient<IExternalCandidateService, ExternalCandidateService>();
 
 var app = builder.Build();
 

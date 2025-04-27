@@ -1,7 +1,5 @@
-﻿using AutobotBlazor.Shared.Models;
-using AutobotBlazor.Shared.Services;
+﻿using AutobotBlazor.Shared.Services;
 using System.Net.Http.Json;
-using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace AutobotBlazor.Client.Service.CandidateService
